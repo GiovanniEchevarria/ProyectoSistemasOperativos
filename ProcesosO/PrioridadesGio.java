@@ -20,9 +20,9 @@ class ProcesosP {
 
 public class PrioridadesGio {
 
-    static Random r = new Random();
-    static int cambios = 0;
-    static int quantum = r.nextInt(4) + 2;
+   public static Random r = new Random();
+    public static int cambios = 0;
+    public static int quantum = r.nextInt(4) + 2;
 
     public static void inicio(String[] args) {
 

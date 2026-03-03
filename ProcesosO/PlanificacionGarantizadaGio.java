@@ -19,8 +19,8 @@ class ProcesoG {
 
 public class PlanificacionGarantizadaGio {
 
-    static Random r = new Random();
-    static int cambios = 0;
+    public static Random r = new Random();
+   public static int cambios = 0;
 
     public static void inicio(String[] args) {
 
