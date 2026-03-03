@@ -2,7 +2,7 @@ package ProcesosO;
 import java.util.*;
 
 //PCB (Bloque de Control de Proceso)
-class Proceso {
+class ProcesosP {
     int id;
     int tiempoRestante;
     int estado; // 1=Listo 2=Bloqueado 3=Ejecutando 4=Terminado
@@ -10,7 +10,7 @@ class Proceso {
     int intentos = 0;
     boolean entro = false;
 
-    Proceso(int id, int tiempo, int estado, int prioridad) {
+    ProcesosP(int id, int tiempo, int estado, int prioridad) {
         this.id = id;
         this.tiempoRestante = tiempo;
         this.estado = estado;
@@ -37,10 +37,10 @@ public class PrioridadesGio {
         int tiempoSim = r.nextInt(16) + 20;
         int n = r.nextInt(10) + 1;
 
-        ArrayList<Proceso> lista = new ArrayList<>();
+        ArrayList<ProcesosP> lista = new ArrayList<>();
 
         for (int i = 1; i <= n; i++) {
-            lista.add(new Proceso(
+            lista.add(new ProcesosP(
                     i,
                     r.nextInt(8) + 3,
                     r.nextInt(2) + 1,
@@ -59,11 +59,11 @@ public class PrioridadesGio {
 
     //SIMULACION
 
-    static void simular(ArrayList<Proceso> lista, int tiempoMax, boolean apropiativo) {
+    static void simular(ArrayList<ProcesosP> lista, int tiempoMax, boolean apropiativo) {
 
         for (int t = 0; t < tiempoMax; t++) {
 
-            Proceso actual = mayorPrioridad(lista);
+            ProcesosP actual = mayorPrioridad(lista);
             if (actual == null) break;
 
             ejecutar(actual, apropiativo);
@@ -72,7 +72,7 @@ public class PrioridadesGio {
 
     //EJECUCION
 
-    static void ejecutar(Proceso p, boolean apropiativo) {
+    static void ejecutar(ProcesosP p, boolean apropiativo) {
 
         if (p.estado == 2) {
             desbloquear(p);
@@ -125,7 +125,7 @@ public class PrioridadesGio {
 
     // DESBLOQUEO
 
-    static void desbloquear(Proceso p) {
+    static void desbloquear(ProcesosP p) {
 
         int v = r.nextInt(2);
 
@@ -146,11 +146,11 @@ public class PrioridadesGio {
 
     //  AUX
 
-    static Proceso mayorPrioridad(ArrayList<Proceso> lista) {
+    static ProcesosP mayorPrioridad(ArrayList<ProcesosP> lista) {
 
-        Proceso mejor = null;
+        ProcesosP mejor = null;
 
-        for (Proceso p : lista)
+        for (ProcesosP p : lista)
             if (p.estado == 1 && p.tiempoRestante > 0)
                 if (mejor == null || p.prioridad > mejor.prioridad)
                     mejor = p;
@@ -158,24 +158,24 @@ public class PrioridadesGio {
         return mejor;
     }
 
-    static void mostrarPCB(ArrayList<Proceso> lista) {
+    static void mostrarPCB(ArrayList<ProcesosP> lista) {
         System.out.println("\nID | Tiempo | Estado | Prioridad");
-        for (Proceso p : lista)
+        for (ProcesosP p : lista)
             System.out.println(p.id + " | " + p.tiempoRestante +
                     " | " + p.estado +
                     " | " + p.prioridad);
     }
 
-    static void reporte(ArrayList<Proceso> lista) {
+    static void reporte(ArrayList<ProcesosP> lista) {
 
-        System.out.println("\n--- REPORTE FINAL ---");
+        System.out.println("\nREPORTE FINAL");
 
         System.out.print("Terminados: ");
-        for (Proceso p : lista)
+        for (ProcesosP p : lista)
             if (p.estado == 4) System.out.print(p.id + " ");
 
         System.out.print("\nNunca ejecutados: ");
-        for (Proceso p : lista)
+        for (ProcesosP p : lista)
             if (!p.entro) System.out.print(p.id + " ");
 
         System.out.println("\nCambios de proceso: " + cambios);

@@ -11,7 +11,6 @@ public class Menu {
         int opcion;
         Scanner sc = new Scanner(System.in);
 
-        // Displaying the menu
         System.out.println("Elije el proceso a realizar:");
         System.out.println("1. Round Robin y Proceso más corto primero");
         System.out.println("2. Prioridades");
