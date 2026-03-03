@@ -1,4 +1,4 @@
-package Procesos;
+package ProcesosO;
 import java.util.*;
 
 class ProcesoG {

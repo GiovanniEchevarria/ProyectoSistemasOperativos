@@ -1,4 +1,4 @@
-package Procesos;
+package ProcesosO;
 import java.util.*;
 
 //PCB (Bloque de Control de Proceso)
